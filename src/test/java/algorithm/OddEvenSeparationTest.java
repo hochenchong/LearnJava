@@ -70,4 +70,19 @@ public class OddEvenSeparationTest {
 		arrays = OddEvenSeparation.selectSort(arrays, limit + 1, arrays.length - 1);
 		Assert.assertArrayEquals(new int[] {1, 3, 5, 7, 9, 2, 4, 6, 8, 10}, arrays);
 	}
+	
+	// 测试一下 oddEvenSeparationSort 方法，是否奇偶分离，并从小到大排序
+	@Test
+	public void testOddEvenSeparationSort() {
+		int[] arrays1 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+		int[] arrays2 = { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+		int[] arrays3 = { 10, 1, 9, 2, 8, 3, 7, 4, 6, 5};
+		
+		Assert.assertArrayEquals(new int[] {1, 3, 5, 7, 9, 2, 4, 6, 8, 10}, 
+				OddEvenSeparation.oddEvenSeparationSort(arrays1));
+		Assert.assertArrayEquals(new int[] {1, 3, 5, 7, 9, 2, 4, 6, 8, 10}, 
+				OddEvenSeparation.oddEvenSeparationSort(arrays2));
+		Assert.assertArrayEquals(new int[] {1, 3, 5, 7, 9, 2, 4, 6, 8, 10}, 
+				OddEvenSeparation.oddEvenSeparationSort(arrays3));
+	}
 }
