@@ -1,12 +1,12 @@
 package algorithm;
 
-import java.util.Arrays;
-
 /**
  * @Description: 一个整型数组中，奇数偶数进行分离，不引入新的数组
  *     例如：
  *         输入数组 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
  *         输出数组 [1, 9, 3, 7, 5, 6, 4, 8, 2, 10]
+ *     扩展：
+ *         可以奇偶分离后，让奇数，偶数分别从小到大排序
  * @author: HochenChong
  * @date: 2018-08-13
  * @version v0.1
@@ -40,27 +40,32 @@ public class OddEvenSeparation {
 			} 
 			// 当 arrays[first] 为奇数，arrays[last] 为奇数时，不做任何处理
 		}
-		System.out.println(Arrays.toString(arrays));
 		
 		return arrays;
 	}
 	
-	// 将整型数组奇偶分离，同时按大小排序
-	public static int[] oddEvenSort(int[] arrays) {
-		arrays = oddEvenSeparation(arrays);
-		
-		// 找到奇偶分离的交界，下标为 limit 为该数组中的奇偶交界处中的奇数下标
-		int limit = 0;
-		for (limit = 0; limit < arrays.length - 1; limit++) {
-			if (arrays[limit] % 2 == 1 && arrays[limit+1] % 2 == 0) {
-				break;
+	/**
+	 * 选择排序 —— 从小到大排序
+	 * @param arrays   要排序的数组
+	 * @param first    要排序的第一个下标值
+	 * @param last     要排序的最后一个下标值
+	 * @return         返回排好序的数组
+	 */
+	public static int[] selectSort(int[] arrays, int first, int last) {
+		for (; first < last; first++) {
+			int min = first;
+			for (int i = first + 1; i <= last; i++) {
+				if (arrays[min] > arrays[i]) {
+					min = i;
+				}
+			}
+			if (min != first) {
+				int temp = arrays[first];
+				arrays[first] = arrays[min];
+				arrays[min] = temp;
 			}
 		}
-		System.out.println(limit);
-		
-		// 对奇数部分进行快速排序
-		
-		// 对偶数部分进行快速排序
+
 		return arrays;
 	}
 }
