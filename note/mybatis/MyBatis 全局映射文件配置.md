@@ -10,10 +10,10 @@
 ### properties 属性
 > 使用该标签来引入外部的 properties 配置文件的内容，或通过该标签的子元素 property 来进行配置，从而动态配置全局配置文件中的一些属性值。
 > 
-> 配置的优先级：
+> 配置的优先级（从高到低）：
 > * 通过方法参数传递的属性具有最高优先级
 > * resource/url 属性中指定的配置文件
-> * properties 属性中指定的属性
+> * properties 属性中子元素 property 指定的属性
 > 
 > 常见于配置外部 jdbc.properties 文件，动态配置 JDBC 的属性值。如下：
 
@@ -50,3 +50,35 @@ jdbc.password=123456
 	</environment>
 </environments>
 ```
+
+---
+
+### settings 设置
+
+---
+
+### typeAliases 类型别名
+
+---
+
+### typeHandlers 类型处理器
+
+---
+
+### objectFactory 对象工厂
+
+---
+
+### plugins 插件
+
+--- 
+
+### environments 环境
+
+---
+
+### databaseIdProvider 数据库厂商标识
+
+---
+
+### mappers 映射器
