@@ -10,6 +10,11 @@
 ### properties 属性
 > 使用该标签来引入外部的 properties 配置文件的内容，或通过该标签的子元素 property 来进行配置，从而动态配置全局配置文件中的一些属性值。
 > 
+> 配置的优先级：
+> * 通过方法参数传递的属性具有最高优先级
+> * resource/url 属性中指定的配置文件
+> * properties 属性中指定的属性
+> 
 > 常见于配置外部 jdbc.properties 文件，动态配置 JDBC 的属性值。如下：
 
 #### jdbc.properties
