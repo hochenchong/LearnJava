@@ -19,8 +19,8 @@ public class SingletonDemo01Test {
 	 */
 	@Test
 	public void testGetInstance() {
-		SingletonDemo01 s1 = SingletonDemo01Test.getInstance();
-		SingletonDemo01 s2 = SingletonDemo01Test.getInstance();
+		SingletonDemo01 s1 = SingletonDemo01.getInstance();
+		SingletonDemo01 s2 = SingletonDemo01.getInstance();
 		// s1 == s2 是否为 true，即 s1 与 s2 是否为同一个对象
 		Assert.assertSame(s1, s2);
 	}
