@@ -45,6 +45,8 @@ public class SingletonDemo01Test {
 		constructor.setAccessible(true);
 		SingletonDemo01 s2 = constructor.newInstance();
 
-		assertNotEquals(s1, s2);
+		// assertNotEquals(s1, s2);
+		// 修改饿汉式单例模式类，解决反射漏洞
+		assertEquals(s1, s2);
 	}
 }
