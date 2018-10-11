@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * @Description: SingletonDemo02 懒汉式单例模式单元测试类
  * @author: HochenChong
- * @date: 2018-10-09
+ * @date: 2018-10-11
  * @version v0.1
  */
 
