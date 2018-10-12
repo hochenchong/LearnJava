@@ -3,6 +3,7 @@ package pattern.singleton;
 import static org.junit.Assert.*;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 import org.junit.Test;
 
@@ -37,16 +38,19 @@ public class SingletonDemo01Test {
 	 */
 	@Test
 	public void testReflectBug() throws Exception {
+		
 		SingletonDemo01 s1 = SingletonDemo01.getInstance();
 		
-		Class<SingletonDemo01> clz = (Class<SingletonDemo01>) s1.getClass();
+		// 以下两种方式皆可
+		// Class<SingletonDemo01> clz = (Class<SingletonDemo01>) s1.getClass();
+		Class<SingletonDemo01> clz = (Class<SingletonDemo01>) Class.forName("pattern.singleton.SingletonDemo01");
+		
 		Constructor<SingletonDemo01> constructor = clz.getDeclaredConstructor(null);
 		// 设置 accessible 为 true，跳过权限检查
 		constructor.setAccessible(true);
+		// 修改饿汉式单例模式类，解决反射漏洞，当再次调用构造方法时抛出异常
 		SingletonDemo01 s2 = constructor.newInstance();
 
-		// assertNotEquals(s1, s2);
-		// 修改饿汉式单例模式类，解决反射漏洞
-		assertEquals(s1, s2);
+		assertNotEquals(s1, s2);
 	}
 }
