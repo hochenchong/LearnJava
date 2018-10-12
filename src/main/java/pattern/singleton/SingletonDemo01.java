@@ -16,10 +16,15 @@ public class SingletonDemo01 {
 	
 	// 构造方法私有化
 	private SingletonDemo01() {
+		// 解决反射漏洞，当对象已创建过时，再次创建则抛出运行时异常
+		/*
+		if (null != instance) {
+			throw new RuntimeException();
+		}
+		*/
 	}
 
 	public static SingletonDemo01 getInstance() {
 		return instance;
 	}
-	
 }
