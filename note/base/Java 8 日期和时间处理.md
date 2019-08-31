@@ -212,6 +212,7 @@ public void testCountdown() {
 #### 参考资料
 
 * 《Java 核心技术 卷1：基础知识》
+* Joda Time 介绍：[https://www.joda.org/joda-time/](https://www.joda.org/joda-time/)
 * [如何在Java 8中愉快地处理日期和时间 - *廖雪峰*的官方网站](https://www.liaoxuefeng.com/article/991339711823296)
 
 #### 后记
