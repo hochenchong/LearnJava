@@ -18,19 +18,19 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 /**
+ * @version v0.1
  * @Description: Guava 中的 Joiner 类使用
  * @author: HochenChong
  * @date: 2020-5-7
- * @version v0.1
  */
 
 public class JoinerTest {
 
     /**
      * 使用 Joiner 合并字符串，以及 Java 8 Stream 合并字符串
-     *
+     * <p>
      * Joiner 中的 join 方法里，实际上是调用了 Joiner 里的另一个方法：
-     *     appendTo(new StringBuilder(), parts).toString()
+     * appendTo(new StringBuilder(), parts).toString()
      */
     @Test
     public void testJoinString() {
@@ -79,7 +79,6 @@ public class JoinerTest {
     @Test
     public void testJoinStringSkipNullValueToWriter() {
         String fileNamePath = "a.txt";
-
         List<String> stringList = Arrays.asList("a", "b", "c", "d", null);
 
         try (FileWriter fileWriter = new FileWriter(new File(fileNamePath))) {
@@ -98,7 +97,6 @@ public class JoinerTest {
     @Test
     public void testJoinStringReplaceNullValueWithDefaultValue() {
         String defaultValue = "DEFAULT";
-
         List<String> stringList = Arrays.asList("a", "b", null, "c", "d", null);
 
         // 使用 Guava Joiner 处理
