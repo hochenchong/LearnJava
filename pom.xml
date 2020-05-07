@@ -19,6 +19,13 @@
 			<version>2.2.3</version>
 		</dependency>
 
+		<!-- 谷歌扩展类库 guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>29.0-jre</version>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
