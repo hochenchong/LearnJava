@@ -18,10 +18,11 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 /**
- * @version v0.1
  * @Description: Guava 中的 Joiner 类使用
+ * <p>
  * @author: HochenChong
  * @date: 2020-5-7
+ * @version v0.1
  */
 
 public class JoinerTest {
