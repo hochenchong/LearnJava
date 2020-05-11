@@ -2,9 +2,12 @@ package guava;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Splitter;
+import com.google.common.base.Strings;
 import org.junit.Test;
+
 import java.util.List;
 import java.util.Map;
+
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
@@ -65,15 +68,30 @@ public class SplitterTest {
         assertThat(splitterList.get(3), equalTo("d"));
 
         List<String> splitterTrimResultList = Splitter.on("#").trimResults().splitToList("a # b#c #d");
-        assertThat(splitterList, notNullValue());
+        assertThat(splitterTrimResultList, notNullValue());
         assertThat(splitterTrimResultList.size(), equalTo(4));
         assertThat(splitterTrimResultList.get(0), equalTo("a"));
         assertThat(splitterTrimResultList.get(1), equalTo("b"));
         assertThat(splitterTrimResultList.get(2), equalTo("c"));
         assertThat(splitterTrimResultList.get(3), equalTo("d"));
 
-        // TODO 空格在中间呢？
-        // List<String> stringList = Splitter.on("#").trimResults().splitToList("a # b#c c#d");
+        /*
+        将所有有空格的地方都去掉
+            先对空格进行处理，再进行分割
+
+        Strings.nullToEmpty() 将 null 转换为 '' 空字符串，避免传入 removeFrom 传入的是 null 而报空指针异常
+         */
+        String removeWhitespaceString = CharMatcher.whitespace().removeFrom(Strings.nullToEmpty("a #  b#c  c#d"));
+        assertThat(removeWhitespaceString, equalTo("a#b#cc#d"));
+        List<String> removeWhitespaceSplitterList = Splitter.on("#").splitToList(removeWhitespaceString);
+        // 写成一行
+        // List<String> removeWhitespaceSplitterList = Splitter.on("#").splitToList(CharMatcher.whitespace().removeFrom(Strings.nullToEmpty("a #  b#c  c#d")));
+        assertThat(removeWhitespaceSplitterList, notNullValue());
+        assertThat(removeWhitespaceSplitterList.size(), equalTo(4));
+        assertThat(removeWhitespaceSplitterList.get(0), equalTo("a"));
+        assertThat(removeWhitespaceSplitterList.get(1), equalTo("b"));
+        assertThat(removeWhitespaceSplitterList.get(2), equalTo("cc"));
+        assertThat(removeWhitespaceSplitterList.get(3), equalTo("d"));
 
         String testString = " c c ";
         assertThat(CharMatcher.javaLetterOrDigit().retainFrom(testString), equalTo("cc"));
